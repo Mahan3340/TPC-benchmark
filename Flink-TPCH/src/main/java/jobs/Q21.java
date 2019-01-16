@@ -51,17 +51,32 @@ public class Q21 {
             Table o_temp = orders.select("O_ORDERKEY,O_ORDERSTATUS").filter("O_ORDERSTATUS = 'F' ");
             Table n_temp = nation.filter("N_NAME.like('%EGYPT%') ");
 
-            Table line1 = l_temp.groupBy("L_ORDERKEY").select("L_ORDERKEY,L_SUPPKEY.count as SUPPKEY_COUNT,L_SUPPKEY.max as SUPPKEY_MAX ").select("L_ORDERKEY as KEY,SUPPKEY_COUNT,SUPPKEY_MAX");
-            Table line2 = l_temp.groupBy("L_ORDERKEY").select("L_ORDERKEY,L_SUPPKEY.count as SUPPKEY_COUNT,L_SUPPKEY.max as SUPPKEY_MAX ").select("L_ORDERKEY as KEY,SUPPKEY_COUNT,SUPPKEY_MAX");
+            Table line1 = l_temp
+                .groupBy("L_ORDERKEY")
+                .select("L_ORDERKEY,L_SUPPKEY.count as SUPPKEY_COUNT,L_SUPPKEY.max as SUPPKEY_MAX ").select("L_ORDERKEY as KEY,SUPPKEY_COUNT,SUPPKEY_MAX");
+            Table line2 = l_temp
+                .groupBy("L_ORDERKEY")
+                .select("L_ORDERKEY,L_SUPPKEY.count as SUPPKEY_COUNT,L_SUPPKEY.max as SUPPKEY_MAX ").select("L_ORDERKEY as KEY,SUPPKEY_COUNT,SUPPKEY_MAX");
 
 
             Table n_s = n_temp.join(s_temp).where("S_NATIONKEY == N_NATIONKEY");
             Table n_s_l = n_s.join(l_temp2).where("S_SUPPKEY == L_SUPPKEY");
             Table n_s_l_o = n_s_l.join(o_temp).where("O_ORDERKEY == L_ORDERKEY");
-            Table n_s_l_o_line1 = n_s_l_o.join(line1).where("KEY == L_ORDERKEY").filter(" ( SUPPKEY_COUNT>1 || SUPPKEY_COUNT == 1 ) && (L_SUPPKEY == SUPPKEY_MAX) ").select("S_NAME,L_ORDERKEY,L_SUPPKEY");
+            
+            Table n_s_l_o_line1 = n_s_l_o.
+                join(line1)
+                .where("KEY == L_ORDERKEY")
+                .filter(" ( SUPPKEY_COUNT>1 || SUPPKEY_COUNT == 1 ) && (L_SUPPKEY == SUPPKEY_MAX) ")
+                .select("S_NAME,L_ORDERKEY,L_SUPPKEY");
 
-            Table n_s_l_o_line1_line2 = n_s_l_o_line1.leftOuterJoin(line2).where("L_ORDERKEY == KEY").select("S_NAME, L_ORDERKEY, L_SUPPKEY,SUPPKEY_COUNT,SUPPKEY_MAX").filter("(SUPPKEY_COUNT == 1) && (L_SUPPKEY == SUPPKEY_MAX)" ).groupBy("S_NAME")
-                    .select("S_NAME,L_SUPPKEY.count as NUM_WAIT").orderBy("NUM_WAIT.desc,S_NAME");
+            Table n_s_l_o_line1_line2 = n_s_l_o_line1
+                .leftOuterJoin(line2)
+                .where("L_ORDERKEY == KEY")
+                .select("S_NAME, L_ORDERKEY, L_SUPPKEY,SUPPKEY_COUNT,SUPPKEY_MAX")
+                .filter("(SUPPKEY_COUNT == 1) && (L_SUPPKEY == SUPPKEY_MAX)" )
+                .groupBy("S_NAME")
+                .select("S_NAME,L_SUPPKEY.count as NUM_WAIT")
+                .orderBy("NUM_WAIT.desc,S_NAME");
 
 
             //Convert Results
