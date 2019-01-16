@@ -42,5 +42,4 @@ where
 	and n_name = 'ALGERIA'
 order by
 	s_name
-LIMIT 1;
 COMMIT;
