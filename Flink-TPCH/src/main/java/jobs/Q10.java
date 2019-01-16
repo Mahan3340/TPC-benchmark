@@ -57,8 +57,10 @@ public class Q10 {
             Table o_c = o_temp.join(customer).where("C_CUSTKEY == O_CUSTKEY");
             Table o_c_n = o_c.join(nation).where("C_NATIONKEY == N_NATIONKEY");
             Table o_c_n_l = o_c_n.join(l_temp).where("L_ORDERKEY == O_ORDERKEY");
-            Table res = o_c_n_l.select("C_CUSTKEY,C_NAME,(L_EXTENDEDPRICE*(1-L_DISCOUNT)) as VOLUME,C_ACCTBAL,N_NAME,C_ADDRESS,C_PHONE,C_COMMENT")
-                    .groupBy("C_CUSTKEY,C_NAME,C_ACCTBAL,N_NAME,C_ADDRESS,C_COMMENT,C_PHONE").select("VOLUME.sum as REVENUE,C_CUSTKEY,C_NAME,C_ACCTBAL,N_NAME,C_ADDRESS,C_COMMENT,C_PHONE");
+            Table res = o_c_n_l
+                .select("C_CUSTKEY,C_NAME,(L_EXTENDEDPRICE*(1-L_DISCOUNT)) as VOLUME,C_ACCTBAL,N_NAME,C_ADDRESS,C_PHONE,C_COMMENT")
+                .groupBy("C_CUSTKEY,C_NAME,C_ACCTBAL,N_NAME,C_ADDRESS,C_COMMENT,C_PHONE")
+                .select("VOLUME.sum as REVENUE,C_CUSTKEY,C_NAME,C_ACCTBAL,N_NAME,C_ADDRESS,C_COMMENT,C_PHONE");
 
             //Convert Results
             DataSet<Result10> result = tEnv.toDataSet(res, Result10.class);
