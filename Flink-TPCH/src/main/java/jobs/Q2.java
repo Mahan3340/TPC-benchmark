@@ -61,8 +61,13 @@ public class Q2 {
             Table ps_temp = partsupp.filter(query);
             Table n_r_s = n_r.join(supplier).where("N_NATIONKEY == S_NATIONKEY");
             Table n_r_s_ps = n_r_s.join(ps_temp).where("PS_SUPPKEY == S_SUPPKEY");
-            Table n_r_s_p_ps = n_r_s_ps.join(p_temp).where("P_PARTKEY == PS_PARTKEY").select("S_ACCTBAL,S_NAME,N_NAME,P_PARTKEY,P_MFGR,S_ADDRESS,S_PHONE" +
-                    ",S_COMMENT").orderBy("S_ACCTBAL.desc,N_NAME,S_NAME,P_PARTKEY").fetch(100);
+            Table n_r_s_p_ps = n_r_s_ps
+                .join(p_temp)
+                .where("P_PARTKEY == PS_PARTKEY")
+                .select("S_ACCTBAL,S_NAME,N_NAME,P_PARTKEY,P_MFGR,S_ADDRESS,S_PHONE" +
+                    ",S_COMMENT")
+                .orderBy("S_ACCTBAL.desc,N_NAME,S_NAME,P_PARTKEY")
+                .fetch(100);
 
 
             //Convert Results
