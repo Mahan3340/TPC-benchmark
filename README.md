@@ -20,7 +20,7 @@ Run Queries:
 
 3) Flink 
 
-- Copy all jar files from /Jars/Flink into Flink/Lib folder for flink-taskmanager and flink-jobManager
+- Copy all jar files from /Jars/Flink into Flink/Lib folder into flink-taskmanager and flink-jobManager lib folders
 
 ** Note that all the jars included in this folder should be the same version as the one that your current flink supports
 	I used Flink 1.6.2 and all the jar files are compatile with version 1.6.2.
