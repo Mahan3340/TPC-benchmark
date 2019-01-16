@@ -55,9 +55,14 @@ public class Q11 {
             Table n_s_ps = n_s.join(partsupp).where("S_SUPPKEY == PS_SUPPKEY")
                     .select("PS_PARTKEY,(PS_SUPPLYCOST*PS_AVAILQTY) as VALUE");
             Table sum = n_s_ps.select("VALUE.sum as TOTAL_VALUE");
-            Table res1 = n_s_ps.groupBy("PS_PARTKEY").select("VALUE.sum as PART_VALUE,PS_PARTKEY");
-            Table res2 = res1.join(sum).filter("PART_VALUE > (TOTAL_VALUE*0.0001)").orderBy("PART_VALUE.desc")
-                    .select("PS_PARTKEY,PART_VALUE");
+            Table res1 = n_s_ps
+                .groupBy("PS_PARTKEY")
+                .select("VALUE.sum as PART_VALUE,PS_PARTKEY");
+            Table res2 = res1
+                .join(sum)
+                .filter("PART_VALUE > (TOTAL_VALUE*0.0001)")
+                .orderBy("PART_VALUE.desc")
+                .select("PS_PARTKEY,PART_VALUE");
 
             //Convert Results
             DataSet<Result11> result = tEnv.toDataSet(res2, Result11.class);
