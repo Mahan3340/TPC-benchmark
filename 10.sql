@@ -32,25 +32,3 @@ order by
 	revenue desc
 LIMIT 20;
 COMMIT;
-
-
-l_temp = lineitem.filter("l_returnflag == 'R' ")
-o_temp = orders.filter("o_orderdate >= '1994-01-01' ").filter("o_orderdate < '1994-4-01'")
-o_c = o_temp.join(customer,o_temp.O_CUSTKEY == customer.C_CUSTKEY)
-o_c_n = o_c.join(nation,o_c.C_NATIONKEY == nation.N_NATIONKEY)
-o_c_n_l = o_c_n.join(l_temp,l_temp.O_ORDERKEY == o_c_n.O_ORDERKEY)
-res = o_c_n_l.select('C_CUSTKEY','C_NAME',(o_c_n_l.L_EXTENDEDPRICE*(1-o_c_n_l.L_DISCOUNT)).alias("VOLUME"),'C_ACCTBAL','N_NAME','C_ADDRESS','C_PHONE','C_COMMENT','C_PHONE')
-res2 = res.groupBy('C_CUSTKEY','C_NAME','C_ACCTBAL','N_NAME','C_ADDRESS','C_COMMENT','C_PHONE').agg(F.sum("VOLUME").alias("REVENUE"))
-
-
-datetime.datetime.now().time()
-res2.limit(10).show()
-datetime.datetime.now().time()
-
-
-
-
-
-
-
-
