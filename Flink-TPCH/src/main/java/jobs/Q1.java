@@ -48,7 +48,10 @@ public class Q1 {
             Table lineitem = Lineitem.getTable(env,tEnv,dataAddress);
 
             //Query
-            Table resultTable = lineitem.filter("L_SHIPDATE <= '1998-09-02'").groupBy("L_RETURNFLAG,L_LINESTATUS").select("L_RETURNFLAG,L_LINESTATUS,L_QUANTITY.sum as SUM_QTY,(L_EXTENDEDPRICE*(1-L_DISCOUNT)).sum as SUM_DISC_PRICE," +
+            Table resultTable = lineitem
+                .filter("L_SHIPDATE <= '1998-09-02'")
+                .groupBy("L_RETURNFLAG,L_LINESTATUS")
+                .select("L_RETURNFLAG,L_LINESTATUS,L_QUANTITY.sum as SUM_QTY,(L_EXTENDEDPRICE*(1-L_DISCOUNT)).sum as SUM_DISC_PRICE," +
                     "L_EXTENDEDPRICE.sum as SUM_BASE_PRICE,(L_EXTENDEDPRICE*(1-L_DISCOUNT)*(1+L_TAX)).sum as SUM_CHARGE,L_QUANTITY.avg as AVG_QTY,L_EXTENDEDPRICE.avg as AVG_PRICE,L_DISCOUNT.avg as AVG_DISC")
                     .orderBy("L_RETURNFLAG,L_LINESTATUS");
 
