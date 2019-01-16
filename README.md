@@ -64,12 +64,17 @@ region.avro
 d) some of the Queries will need more resources to be executed successfully, here's my modifications to the configuration file under /Flink/Conf file for a Server with 16 Cores and 39GB of Ram :
 
 #heap size should be less than memory size
+
 taskmanager.heap.size: 8192m
+
 taskmanager.memory.size: 16384m
+
 taskmanager.memory.segment-size: 64kb
+
 taskmanager.memory.fraction: 0.8
  
  #if a job fails due to some reasons, it will re execute the query again after a fixed amount of time
+ 
  restart-strategy: fixed-delay
  
  parallelism.default: 1
