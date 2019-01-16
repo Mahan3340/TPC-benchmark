@@ -50,8 +50,11 @@ public class Q17 {
             Table p_l = p_temp.leftOuterJoin(l_temp).where("P_PARTKEY == L_PARTKEY");
             Table p_temp2 = p_l.groupBy("P_PARTKEY").select("(L_QUANTITY*0.2).avg as AVG_QUANTITY,P_PARTKEY as KEY");
             p_temp2 = p_temp2.join(p_l).where("KEY == P_PARTKEY").select("AVG_QUANTITY,KEY,L_QUANTITY,L_EXTENDEDPRICE");
-            Table p_p = p_temp.join(p_temp2).where("KEY == P_PARTKEY").filter("L_QUANTITY < AVG_QUANTITY")
-                    .select("(L_EXTENDEDPRICE/0.7) as AVG_YEARLY");
+            Table p_p = p_temp
+                .join(p_temp2)
+                .where("KEY == P_PARTKEY")
+                .filter("L_QUANTITY < AVG_QUANTITY")
+                .select("(L_EXTENDEDPRICE/0.7) as AVG_YEARLY");
 
 
             //Convert Results
