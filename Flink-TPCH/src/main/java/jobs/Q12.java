@@ -57,9 +57,12 @@ public class Q12 {
             //Query
             Table l_temp = lineitem.filter("(L_SHIPMODE = 'MAIL' || L_SHIPMODE == 'SHIP') && L_COMMITDATE < L_RECEIPTDATE && " +
                     "L_SHIPDATE < L_COMMITDATE && L_RECEIPTDATE >= '1997-01-01' && L_RECEIPTDATE <= '1998-01-01' ");
-            Table l_o = l_temp.join(orders).where("L_ORDERKEY == O_ORDERKEY")
-                    .select("L_SHIPMODE,O_ORDERPRIORITY");
-            Table res = l_o.groupBy("L_SHIPMODE")
+            Table l_o = l_temp
+                .join(orders)
+                .where("L_ORDERKEY == O_ORDERKEY")
+                .select("L_SHIPMODE,O_ORDERPRIORITY");
+            Table res = l_o
+                    .groupBy("L_SHIPMODE")
                     .select("L_SHIPMODE,isHigh(O_ORDERPRIORITY).sum as HIGH_LINE_COUNT,isLow(O_ORDERPRIORITY).sum as LOW_LINE_COUNT")
                     .orderBy("L_SHIPMODE");
 
