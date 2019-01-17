@@ -52,6 +52,7 @@ c) The third and the last address that you will be asked for is the directory th
 ** as for this path be sure to include '/' at both ends
 ** this directory should include all the tables with avro format with names like below:
 
+```
 nation.avro
 lineitem.avro
 part.avro
@@ -60,9 +61,11 @@ supplier.avro
 order.avro
 customer.avro
 region.avro
+```
 
 d) some of the Queries will need more resources to be executed successfully, here's my modifications to the configuration file under /Flink/Conf file for a Server with 16 Cores and 39GB of Ram :
 
+```
 #heap size should be less than memory size
 
 taskmanager.heap.size: 8192m
@@ -78,6 +81,8 @@ taskmanager.memory.fraction: 0.8
  restart-strategy: fixed-delay
  
  parallelism.default: 1
+ 
+ ```
 
 
 
