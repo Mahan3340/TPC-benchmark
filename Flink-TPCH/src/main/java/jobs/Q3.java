@@ -60,10 +60,17 @@ public class Q3 {
             Table o_temp = orders.filter("O_ORDERDATE < '1995-03-13' ");
             Table l_o = l_temp.join(o_temp).where("L_ORDERKEY == O_ORDERKEY");
             Table c_o_l = c_temp.join(l_o).where("C_CUSTKEY == O_CUSTKEY");
-            Table res = c_o_l.select("O_ORDERKEY,O_ORDERDATE,O_SHIPPRIORITY").join(l_temp).where("O_ORDERKEY == L_ORDERKEY")
-                    .select("O_ORDERKEY,O_ORDERDATE,O_SHIPPRIORITY,L_ORDERKEY,L_EXTENDEDPRICE,L_DISCOUNT");
-            Table res2 = res.groupBy("L_ORDERKEY,O_ORDERDATE,O_SHIPPRIORITY").select("(L_EXTENDEDPRICE*(1-L_DISCOUNT)).sum as REVENUE,O_ORDERDATE")
-                    .orderBy("O_ORDERDATE,REVENUE.desc").fetch(10);
+            
+            Table res = c_o_l
+                .select("O_ORDERKEY,O_ORDERDATE,O_SHIPPRIORITY")
+                .join(l_temp)
+                .where("O_ORDERKEY == L_ORDERKEY")
+                .select("O_ORDERKEY,O_ORDERDATE,O_SHIPPRIORITY,L_ORDERKEY,L_EXTENDEDPRICE,L_DISCOUNT");
+            
+            Table res2 = res.
+                groupBy("L_ORDERKEY,O_ORDERDATE,O_SHIPPRIORITY")
+                .select("(L_EXTENDEDPRICE*(1-L_DISCOUNT)).sum as REVENUE,O_ORDERDATE")
+                .orderBy("O_ORDERDATE,REVENUE.desc").fetch(10);
 
             //Convert Results
             DataSet<Result3> result = tEnv.toDataSet(res2, Result3.class);
