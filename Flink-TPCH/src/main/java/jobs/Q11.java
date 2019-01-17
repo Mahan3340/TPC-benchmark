@@ -51,13 +51,22 @@ public class Q11 {
 
             //Query
             Table n_temp = nation.filter("N_NAME.like('%ARGENTINA%')");
-            Table n_s = n_temp.join(supplier).where("N_NATIONKEY == S_NATIONKEY").select("S_SUPPKEY");
-            Table n_s_ps = n_s.join(partsupp).where("S_SUPPKEY == PS_SUPPKEY")
-                    .select("PS_PARTKEY,(PS_SUPPLYCOST*PS_AVAILQTY) as VALUE");
+            Table n_s = n_temp
+                .join(supplier)
+                .where("N_NATIONKEY == S_NATIONKEY")
+                .select("S_SUPPKEY");
+            
+            Table n_s_ps = n_s
+                .join(partsupp)
+                .where("S_SUPPKEY == PS_SUPPKEY")
+                .select("PS_PARTKEY,(PS_SUPPLYCOST*PS_AVAILQTY) as VALUE");
+            
             Table sum = n_s_ps.select("VALUE.sum as TOTAL_VALUE");
+            
             Table res1 = n_s_ps
                 .groupBy("PS_PARTKEY")
                 .select("VALUE.sum as PART_VALUE,PS_PARTKEY");
+            
             Table res2 = res1
                 .join(sum)
                 .filter("PART_VALUE > (TOTAL_VALUE*0.0001)")
