@@ -50,8 +50,10 @@ public class Q18 {
             Table l_temp = lineitem.groupBy("L_ORDERKEY")
                     .select("L_QUANTITY.sum as SUM_QUANTITY,L_ORDERKEY as KEY")
                     .filter("SUM_QUANTITY > 300");
+            
             Table l_o = l_temp.join(orders).where("KEY == O_ORDERKEY");
             l_o = l_o.join(lineitem).where("L_ORDERKEY == KEY");
+            
             Table l_o_c = l_o.join(customer).where("C_CUSTKEY == O_CUSTKEY")
                     .select("L_QUANTITY,C_NAME,C_CUSTKEY,O_ORDERKEY,O_ORDERDATE,O_TOTALPRICE,O_CUSTKEY")
                     .groupBy("C_NAME,C_CUSTKEY,O_ORDERKEY,O_ORDERDATE,O_TOTALPRICE")
