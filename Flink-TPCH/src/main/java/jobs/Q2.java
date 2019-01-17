@@ -56,11 +56,17 @@ public class Q2 {
             Table r_temp = region.filter("R_NAME == 'ASIA' ");
             Table n_r = nation.join(r_temp).where("N_REGIONKEY == R_REGIONKEY");
             Table p_temp = part.filter("P_SIZE == 30").filter("P_TYPE.like('%STEEL%')");
-            Float min_supp_cost = tEnv.toDataSet(partsupp.select("(PS_SUPPLYCOST).min as min_supp_cost"),Float.class).collect().get(0);
+            
+            Float min_supp_cost = tEnv
+                .toDataSet(partsupp.select("(PS_SUPPLYCOST).min as min_supp_cost"),Float.class)
+                .collect()
+                .get(0);
             String query = "PS_SUPPLYCOST == min".replace("min",min_supp_cost+"");
+            
             Table ps_temp = partsupp.filter(query);
             Table n_r_s = n_r.join(supplier).where("N_NATIONKEY == S_NATIONKEY");
             Table n_r_s_ps = n_r_s.join(ps_temp).where("PS_SUPPKEY == S_SUPPKEY");
+            
             Table n_r_s_p_ps = n_r_s_ps
                 .join(p_temp)
                 .where("P_PARTKEY == PS_PARTKEY")
