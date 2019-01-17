@@ -35,7 +35,9 @@ TPC-H Benchmark on Spark (Avro,Parquet,ORC formats) , PostgreSQL , Flink (Avro F
 - To use my project's final jar version run the queries via the lastest jar as below after you copied the jar to your server
 - cd to the jar's location
 - ``` Flink run -c jobs.Q# (replace # with the a TPC-H query number fomr 1 to 22) jarfileName.jar ```
+
   for e.g: ```Flink run -c jobs.Q5 tpcc-flink.jar```
+  
 - This will ask you to provide some Paths:
 
 a) For my convinient, I managed to save all texts printed on the console to a file, regular one's and exceptions on seprate files so the first address you provide is the directory where these two files will be saved as for Query Above, if you enter the address ```/results/``` the files will be saved on this folder as : ```Q5-out.txt and Q5-error.txt``` , which the former contains all the regular System.out.prints and the latter contains exceptions if any have occured, if it's empty, then the Query has been completed successfully and the results are saved somewhere. 
