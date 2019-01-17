@@ -58,10 +58,16 @@ public class Q5 {
             Table c_o = customer.join(o_temp).where("C_CUSTKEY == O_CUSTKEY").select("O_ORDERKEY");
             Table r_n = r_temp.join(nation).where("R_REGIONKEY == N_REGIONKEY");
             Table r_n_s = r_n.join(supplier).where("N_NATIONKEY == S_NATIONKEY");
-            Table r_n_s_l = r_n_s.join(lineitem).where("S_SUPPKEY == L_SUPPKEY")
-                    .select("N_NAME,L_EXTENDEDPRICE,L_DISCOUNT,L_ORDERKEY");
+            
+            Table r_n_s_l = r_n_s
+                .join(lineitem)
+                .where("S_SUPPKEY == L_SUPPKEY")
+                .select("N_NAME,L_EXTENDEDPRICE,L_DISCOUNT,L_ORDERKEY");
+            
             Table r_n_s_l_c_o = r_n_s_l.join(c_o).where("L_ORDERKEY == O_ORDERKEY");
-            Table res = r_n_s_l_c_o.groupBy("N_NAME")
+            
+            Table res = r_n_s_l_c_o
+                    .groupBy("N_NAME")
                     .select("(L_EXTENDEDPRICE*(1-L_DISCOUNT)).sum as REVENUE")
                     .orderBy("REVENUE.desc");
 
