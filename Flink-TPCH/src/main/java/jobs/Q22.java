@@ -50,8 +50,12 @@ public class Q22 {
             c_temp = c_temp.filter("COUNTRY_CODE.in('20', '40', '22', '30', '39', '42', '21')");
             Table c_avg = c_temp.filter("C_ACCTBAL > 0.0 ").select("C_ACCTBAL.avg as AVG_ACCTBAL");
             Table o_c = orders.select("O_CUSTKEY").rightOuterJoin(c_temp,"O_CUSTKEY == C_CUSTKEY");
-            Table o_c_cavg = o_c.join(c_avg).filter("C_ACCTBAL > AVG_ACCTBAL").groupBy("COUNTRY_CODE")
-                    .select("C_ACCTBAL.count as ACCTBAL_COUNT,C_ACCTBAL.sum as ACCTBAL_SUM,COUNTRY_CODE").orderBy("COUNTRY_CODE");
+            Table o_c_cavg = o_c
+                .join(c_avg)
+                .filter("C_ACCTBAL > AVG_ACCTBAL")
+                .groupBy("COUNTRY_CODE")
+                .select("C_ACCTBAL.count as ACCTBAL_COUNT,C_ACCTBAL.sum as ACCTBAL_SUM,COUNTRY_CODE")
+                .orderBy("COUNTRY_CODE");
 
             //Convert Results
             DataSet<Result22> result = tEnv.toDataSet(o_c_cavg,Result22.class);
