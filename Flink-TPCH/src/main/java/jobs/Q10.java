@@ -53,7 +53,10 @@ public class Q10 {
 
             //Query
             Table l_temp = lineitem.filter("L_RETURNFLAG == 'R'");
-            Table o_temp = orders.filter("O_ORDERDATE >= '1994-01-01' ").filter("O_ORDERDATE < '1994-11-01' ");
+            Table o_temp = orders
+                .filter("O_ORDERDATE >= '1994-01-01' ")
+                .filter("O_ORDERDATE < '1994-11-01' ");
+            
             Table o_c = o_temp.join(customer).where("C_CUSTKEY == O_CUSTKEY");
             Table o_c_n = o_c.join(nation).where("C_NATIONKEY == N_NATIONKEY");
             Table o_c_n_l = o_c_n.join(l_temp).where("L_ORDERKEY == O_ORDERKEY");
