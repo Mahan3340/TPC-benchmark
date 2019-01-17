@@ -45,11 +45,23 @@ public class Q15 {
             Table lineitem = Lineitem.getTable(env,tEnv,dataAddress);
             Table supplier = Supplier.getTable(env,tEnv,dataAddress);
 
-            Table l_temp = lineitem.filter("L_SHIPDATE >= '1997-07-01' && L_SHIPDATE < '1997-10-01'").select("L_SUPPKEY,(L_EXTENDEDPRICE*(1-L_DISCOUNT)) as VALUE");
-            Table revenue = l_temp.groupBy("L_SUPPKEY").select("VALUE.sum as TOTAL,L_SUPPKEY");
-            Float max_total = tEnv.toDataSet(revenue.select("TOTAL.max as MAX_TOTAL"),Float.class).collect().get(0);
-            Table res = revenue.filter("TOTAL == max_total".replace("max_total",max_total+""))
-                    .join(supplier).where("S_SUPPKEY == L_SUPPKEY").select("S_SUPPKEY,S_NAME,S_ADDRESS,S_PHONE,TOTAL")
+            Table l_temp = lineitem
+                .filter("L_SHIPDATE >= '1997-07-01' && L_SHIPDATE < '1997-10-01'")
+                .select("L_SUPPKEY,(L_EXTENDEDPRICE*(1-L_DISCOUNT)) as VALUE");
+            
+            Table revenue = l_temp
+                .groupBy("L_SUPPKEY")
+                .select("VALUE.sum as TOTAL,L_SUPPKEY");
+            
+            Float max_total = tEnv
+                .toDataSet(revenue.select("TOTAL.max as MAX_TOTAL"),Float.class)
+                .collect()
+                .get(0);
+            
+            Table res = revenue
+                .filter("TOTAL == max_total".replace("max_total",max_total+""))
+                    .join(supplier).where("S_SUPPKEY == L_SUPPKEY")
+                    .select("S_SUPPKEY,S_NAME,S_ADDRESS,S_PHONE,TOTAL")
                     .orderBy("S_SUPPKEY");
 
             //Convert Results
