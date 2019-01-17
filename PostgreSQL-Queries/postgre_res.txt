@@ -1,6 +1,6 @@
 
-Q1 :
-RAM 707MB
+Q1 : ----------------------------------------------------------------------------------------------------------------
+
 Limit  (cost=25217339.64..25217339.99 rows=1 width=236) (actual rows=1 loops=1)
    ->  Finalize GroupAggregate  (cost=25217339.64..25217341.71 rows=6 width=236) (actual rows=1 loops=1)
          Group Key: l_returnflag, l_linestatus
@@ -20,8 +20,10 @@ Limit  (cost=25217339.64..25217339.99 rows=1 width=236) (actual rows=1 loops=1)
  Planning Time: 3.854 ms
  Execution Time: 1624162.871 ms
 
-Q2 :
-RAM 771MB
+
+
+Q2 :----------------------------------------------------------------------------------------------------------------
+
 Limit  (cost=6724931.06..6724931.06 rows=1 width=271) (actual rows=100 loops=1)
    ->  Sort  (cost=6724931.06..6724931.06 rows=1 width=271) (actual rows=100 loops=1)
          Sort Key: supplier.s_acctbal DESC, nation.n_name, supplier.s_name, part.p_partkey
@@ -82,8 +84,8 @@ Limit  (cost=6724931.06..6724931.06 rows=1 width=271) (actual rows=100 loops=1)
  Planning Time: 4.031 ms
  Execution Time: 567867.449 ms
 
-Q3 :
-RAM 898MB
+Q3 : ----------------------------------------------------------------------------------------------------------------
+
 
 Limit  (cost=30099971.94..30099971.97 rows=10 width=48) (actual rows=10 loops=1)
    ->  Sort  (cost=30099971.94..30179299.51 rows=31731028 width=48) (actual rows=10 loops=1)
@@ -121,9 +123,8 @@ Limit  (cost=30099971.94..30099971.97 rows=10 width=48) (actual rows=10 loops=1)
  Planning Time: 234.847 ms
  Execution Time: 2430743.891 ms
 
-Q4:
+Q4 : ----------------------------------------------------------------------------------------------------------------
 
-RAM : 730MB
 
 Limit  (cost=17797567.68..17797576.76 rows=1 width=24) (actual rows=1 loops=1)
    ->  Finalize GroupAggregate  (cost=17797567.68..17797613.07 rows=5 width=24) (actual rows=1 loops=1)
@@ -149,8 +150,8 @@ Limit  (cost=17797567.68..17797576.76 rows=1 width=24) (actual rows=1 loops=1)
  Planning Time: 41.658 ms
  Execution Time: 4494943.323 ms
 
-Q5: 
-Ram : 880 MB
+Q5: ----------------------------------------------------------------------------------------------------------------
+
 
 Limit  (cost=24211527.73..24211527.73 rows=1 width=58) (actual rows=1 loops=1)
    ->  Sort  (cost=24211527.73..24211527.79 rows=25 width=58) (actual rows=1 loops=1)
@@ -208,9 +209,7 @@ mer.c_nationkey = supplier.s_nationkey))
  Planning Time: 7.286 ms
  Execution Time: 2413962.779 ms
 
-Q6:
-60%
-RAM 859MB
+Q6 : ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=17939160.29..17939160.30 rows=1 width=32) (actual rows=1 loops=1)
    ->  Finalize Aggregate  (cost=17939160.29..17939160.30 rows=1 width=32) (actu
@@ -230,10 +229,7 @@ ipdate < '1995-01-01 00:00:00'::timestamp without time zone) AND (l_discount >=
  Planning Time: 1.665 ms
  Execution Time: 544004.753 ms
 
-Q7:
-
-Ram: 869MB
-50%
+Q7 : ----------------------------------------------------------------------------------------------------------------
 
  Limit  (cost=21477161.88..21477162.62 rows=1 width=92) (actual rows=1 loops=1)
    ->  Finalize GroupAggregate  (cost=21477161.88..21484510.01 rows=10016 width=92) (actual rows=1 loops=1)
@@ -301,9 +297,7 @@ l rows=3991560 loops=3)
  Planning Time: 17.776 ms
  Execution Time: 988751.220 ms
 
-Q8: 
-RAM 910MB
-81%
+Q8: ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=21477161.88..21477162.62 rows=1 width=92) (actual rows=1 loops=1)
    ->  Finalize GroupAggregate  (cost=21477161.88..21484510.01 rows=10016 width=92) (actual rows=1 lo
@@ -375,11 +369,8 @@ rows=2 width=30) (actual rows=2 loops=3)
  Planning Time: 5.075 ms
  Execution Time: 1218102.884 ms
 
-Q9:
+Q9 :  ----------------------------------------------------------------------------------------------------------------
 
-Q10: 
-950MB
-40%
 Limit  (cost=22432070.74..22432070.79 rows=20 width=201) (actual rows=20 loops=1)
    ->  Sort  (cost=22432070.74..22446127.15 rows=5622563 width=201) (actual rows=20 loops=1)
          Sort Key: (sum((lineitem.l_extendedprice * ('1'::numeric - lineitem.l_discount)))) DESC
@@ -419,7 +410,7 @@ Limit  (cost=22432070.74..22432070.79 rows=20 width=201) (actual rows=20 loops=1
  Planning Time: 7.438 ms
  Execution Time: 1098311.650 ms
 
-Q10 :
+Q10 : ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=22432070.74..22432070.79 rows=20 width=201) (actual rows=20 loops=1)
    ->  Sort  (cost=22432070.74..22446127.15 rows=5622563 width=201) (actual rows=20 loops=1)
@@ -460,10 +451,8 @@ Limit  (cost=22432070.74..22432070.79 rows=20 width=201) (actual rows=20 loops=1
  Planning Time: 963.994 ms
  Execution Time: 1595278.902 ms
 
-Q11 :
+Q11 : ----------------------------------------------------------------------------------------------------------------
 
-900MB
-40%
 
  Limit  (cost=4993574.04..4993574.05 rows=1 width=40) (actual rows=0 loops=1)
    InitPlan 1 (returns $1)
@@ -519,9 +508,7 @@ Q11 :
  Execution Time: 102027.318 ms
 
 
-Q12 :
-
-1GB
+Q12 : ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=23040474.75..23043868.55 rows=1 width=27) (actual rows=1 loops=1)
    ->  Finalize GroupAggregate  (cost=23040474.75..23064231.41 rows=7 width=27) (actual rows=1 loops=1)
@@ -547,9 +534,7 @@ Limit  (cost=23040474.75..23043868.55 rows=1 width=27) (actual rows=1 loops=1)
  Planning Time: 8.205 ms
  Execution Time: 1496393.993 ms
 
-Q13 :
-
-RAM : 1.8GB
+Q13 : ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=23040474.75..23043868.55 rows=1 width=27) (actual rows=1 loops=1)
    ->  Finalize GroupAggregate  (cost=23040474.75..23064231.41 rows=7 width=27) (actual rows=1 loops=1)
@@ -607,20 +592,15 @@ Limit  (cost=20792088.34..20792088.35 rows=1 width=16) (actual rows=1 loops=1)
  Planning Time: 27.192 ms
  Execution Time: 907388.364 ms
 
-Q15:
-
-60% CPU
-1.7GB
+Q15: ----------------------------------------------------------------------------------------------------------------
 
  s_suppkey |          s_name           |           s_address           |     s_phone     | total_revenue 
 -----------+---------------------------+-------------------------------+-----------------+---------------
     829926 | Supplier#000829926        | M4VdUYhUdOFcnY5eKTmQqHQddnPsf | 15-215-312-5605 |  2362529.6205
 
-Time: 30.117 ms
-Time: 3214637.873 ms (53:34.638)
-Time: 240.969 ms
+Time: 3214637.873 ms
 
-Q16: 
+Q16: ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=5162305.19..5162305.19 rows=1 width=44) (actual rows=1 loops=1)
    ->  Sort  (cost=5162305.19..5162773.94 rows=187500 width=44) (actual rows=1 loops=1)
@@ -650,7 +630,7 @@ Limit  (cost=5162305.19..5162305.19 rows=1 width=44) (actual rows=1 loops=1)
  Planning Time: 278.417 ms
  Execution Time: 235946.101 ms
 
-Q17;
+Q17 : ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=72112385.79..72112385.80 rows=1 width=32) (actual rows=1 loops=1)
    ->  Aggregate  (cost=72112385.79..72112385.80 rows=1 width=32) (actual rows=1 loops=1)
@@ -683,7 +663,7 @@ Limit  (cost=72112385.79..72112385.80 rows=1 width=32) (actual rows=1 loops=1)
                                        Index Cond: (l_partkey = part.p_partkey)
  Planning Time: 219.656 ms
  Execution Time: 14025942.678 ms
-Q18 :
+Q18 : ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=47422459.54..47422459.79 rows=100 width=71) (actual rows=100 loops=1)
    ->  Sort  (cost=47422459.54..47423657.64 rows=479238 width=71) (actual rows=100 loops=1)
@@ -718,7 +698,7 @@ Limit  (cost=47422459.54..47422459.79 rows=100 width=71) (actual rows=100 loops=
  Planning Time: 5112.013 ms
  Execution Time: 19415183.500 ms
 
-Q19:
+Q19 : ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=3252333.75..3252333.76 rows=1 width=32) (actual rows=1 loops=1)
    ->  Finalize Aggregate  (cost=3252333.75..3252333.76 rows=1 width=32) (actual rows=1 loops=1)
@@ -737,7 +717,7 @@ Limit  (cost=3252333.75..3252333.76 rows=1 width=32) (actual rows=1 loops=1)
  Planning Time: 1634.047 ms
  Execution Time: 22192711.236 ms
 
-Q20 :
+Q20 : ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=37361463.55..37361463.56 rows=1 width=52) (actual rows=1 loops=1)
    ->  Sort  (cost=37361463.55..37361463.56 rows=1 width=52) (actual rows=1 loops=1)
@@ -791,7 +771,7 @@ Limit  (cost=37361463.55..37361463.56 rows=1 width=52) (actual rows=1 loops=1)
  Planning Time: 1956.630 ms
  Execution Time: 6210228.895 ms
 
-Q21:
+Q21 : ----------------------------------------------------------------------------------------------------------------
 
  Limit  (cost=20068812.41..20068812.41 rows=1 width=34) (actual rows=100 loops=1)
    ->  Sort  (cost=20068812.41..20068812.41 rows=1 width=34) (actual rows=100 loops=1)
@@ -838,7 +818,7 @@ Q21:
  Planning Time: 1844.714 ms
  Execution Time: 2185623.997 ms
 
-Q22 :
+Q22 : ----------------------------------------------------------------------------------------------------------------
 
 Limit  (cost=1143743.28..1143743.42 rows=1 width=72) (actual rows=1 loops=1)
    InitPlan 1 (returns $1)
