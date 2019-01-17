@@ -1,7 +1,7 @@
 # TPC-benchmark
 TPC-H Benchmark on Spark (Avro,Parquet,ORC formats) , PostgreSQL , Flink (Avro Format)
 
-1) PostgreSQL 
+###1) PostgreSQL 
 
 Load Data into Tables :
 
@@ -16,13 +16,13 @@ Run Queries:
  \i query.sql
  ```
 
-2) Spark
+###2) Spark
 
 - For Parquet format Load data into tables via tableName-load.py files in ```/Spark Queries/``` folder
 - Same for avro and orc, except, add /Jars/Spark files into Spark ```.../jars/``` folder for both Spark Master and all Spark Workrs
 - Run Queries from ```/Spark Queries/```
 
-3) Flink 
+###3) Flink 
 
 - Copy all jar files from ```/Jars/Flink``` into ```Flink/Lib``` folder into flink-taskmanager and flink-jobManager lib folders
 
