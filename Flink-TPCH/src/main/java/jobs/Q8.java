@@ -64,19 +64,47 @@ public class Q8 {
             Table p_temp = part.filter("P_TYPE == 'ECONOMY ANODIZED STEEL' ");
             Table n_s = nation.join(supplier).where("N_NATIONKEY == S_NATIONKEY");
             Table l_p = lineitem.join(p_temp).where("L_PARTKEY == P_PARTKEY");
-            Table l_p_n_s = l_p.join(n_s).where("L_SUPPKEY == S_SUPPKEY")
-                    .select("L_PARTKEY,L_SUPPKEY,L_ORDERKEY,(L_EXTENDEDPRICE*(1-L_DISCOUNT)) as VOLUME");
-            Table n_r = nation.join(r_temp).where("N_REGIONKEY == R_REGIONKEY")
-                    .select("N_NATIONKEY,N_NAME");
-            Table n_r_c = n_r.join(customer).where("N_NATIONKEY == C_NATIONKEY")
-                    .select("C_CUSTKEY,N_NAME");
-            Table n_r_c_o = n_r_c.join(o_temp).where("C_CUSTKEY == O_CUSTKEY")
-                         .select("O_ORDERKEY,O_ORDERDATE,N_NAME");
-            Table n_r_c_o_l = n_r_c_o.join(l_p_n_s).where("O_ORDERKEY == L_ORDERKEY");
+            
+            Table l_p_n_s = l_p
+                .join(n_s)
+                .where("L_SUPPKEY == S_SUPPKEY")
+                .select("L_PARTKEY,L_SUPPKEY,L_ORDERKEY,(L_EXTENDEDPRICE*(1-L_DISCOUNT)) as VOLUME");
+            
+            Table n_r = nation
+                .join(r_temp)
+                .where("N_REGIONKEY == R_REGIONKEY")
+                .select("N_NATIONKEY,N_NAME");
+            
+            Table n_r_c = n_r
+                .join(customer)
+                .where("N_NATIONKEY == C_NATIONKEY")
+                .select("C_CUSTKEY,N_NAME");
+            
+            Table n_r_c_o = n_r_c
+                .join(o_temp)
+                .where("C_CUSTKEY == O_CUSTKEY")
+                .select("O_ORDERKEY,O_ORDERDATE,N_NAME");
+            
+            Table n_r_c_o_l = n_r_c_o
+                .join(l_p_n_s)
+                .where("O_ORDERKEY == L_ORDERKEY");
+            
             Table res1 = n_r_c_o_l.select("O_ORDERDATE as O_YEAR ,VOLUME,isJAPAN(N_NAME,VOLUME) as JAPAN_VOLUME");
-            Table res2 = res1.groupBy("O_YEAR").select("O_YEAR as O_YEAR2,VOLUME.sum as TOTAL_VOLUME").orderBy("O_YEAR2");
-            Table res3 = res1.groupBy("O_YEAR").select("O_YEAR as O_YEAR3,JAPAN_VOLUME.sum as TOTAL_JAPAN").orderBy("O_YEAR3");
-            Table res4 = res3.join(res2).where("O_YEAR2 == O_YEAR3").distinct().select("O_YEAR3 as O_YEAR,(TOTAL_JAPAN/TOTAL_VOLUME) as MKT_SHARE");
+            Table res2 = res1
+                .groupBy("O_YEAR")
+                .select("O_YEAR as O_YEAR2,VOLUME.sum as TOTAL_VOLUME")
+                .orderBy("O_YEAR2");
+            
+            Table res3 = res1
+                .groupBy("O_YEAR")
+                .select("O_YEAR as O_YEAR3,JAPAN_VOLUME.sum as TOTAL_JAPAN")
+                .orderBy("O_YEAR3");
+            
+            Table res4 = res3
+                .join(res2)
+                .where("O_YEAR2 == O_YEAR3")
+                .distinct()
+                .select("O_YEAR3 as O_YEAR,(TOTAL_JAPAN/TOTAL_VOLUME) as MKT_SHARE");
 
 
             //Convert Results
