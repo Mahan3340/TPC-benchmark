@@ -57,9 +57,11 @@ public class Q9 {
             Table l_p_s_ps = l_p_s_.join(partsupp).where("L_SUPPKEY == PS_SUPPKEY");
             Table l_p_s_ps_o = l_p_s_ps.join(orders).where("L_ORDERKEY == O_ORDERKEY");
             Table profit = l_p_s_ps_o.select("N_NAME,O_ORDERDATE as O_YEAR,(L_EXTENDEDPRICE * (1 - L_DISCOUNT) - PS_SUPPLYCOST * L_QUANTITY) as AMOUNT");
-            Table res = profit.groupBy("N_NAME,O_YEAR")
-                    .select("AMOUNT.sum as SUM_PROFIT,O_YEAR,N_NAME")
-                    .orderBy("N_NAME,O_YEAR.desc");
+            
+            Table res = profit
+                .groupBy("N_NAME,O_YEAR")
+                .select("AMOUNT.sum as SUM_PROFIT,O_YEAR,N_NAME")
+                .orderBy("N_NAME,O_YEAR.desc");
 
             //Convert Results
             DataSet<Result9> result = tEnv.toDataSet(res, Result9.class);
