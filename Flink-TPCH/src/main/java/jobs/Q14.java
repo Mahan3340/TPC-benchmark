@@ -56,8 +56,15 @@ public class Q14 {
             Table l_temp = lineitem.filter("L_SHIPDATE >='1996-12-01'  && L_SHIPDATE < '1997-01-01'");
             Table l_p = part.join(l_temp).where("P_PARTKEY == L_PARTKEY");
             Table res1 = l_p.select("P_TYPE,(L_EXTENDEDPRICE*(1-L_DISCOUNT)) as VALUE");
-            Float totalSum = tEnv.toDataSet(res1.select("VALUE.sum as TOTAL_VALUE"),Float.class).collect().get(0);
-            Table res2 = res1.select("(promo(P_TYPE,VALUE)).sum*100/totalSum as PROMO_REVENUE".replace("totalSum",totalSum + ""));
+            
+            Float totalSum = tEnv
+                .toDataSet(res1.select("VALUE.sum as TOTAL_VALUE"),Float.class)
+                .collect()
+                
+                .get(0);
+            Table res2 = res1
+                .select("(promo(P_TYPE,VALUE)).sum*100/totalSum as PROMO_REVENUE"
+                        .replace("totalSum",totalSum + ""));
 
 
             //Convert Results
