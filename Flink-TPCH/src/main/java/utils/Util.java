@@ -61,7 +61,7 @@ public class Util {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.SSS");
         Date dt = new Date();
         String date = sdf.format(dt);
-        ;
+        
         switch (status) {
 
             case STATUS_DONE:
