@@ -1,28 +1,27 @@
 # TPC-benchmark
 TPC-H Benchmark on Spark (Avro,Parquet,ORC formats) , PostgreSQL , Flink (Avro Format)
 
-###1) PostgreSQL 
+### PostgreSQL 
 
-Load Data into Tables :
+##### Load Data into Tables :
 
 ```
  BEGIN; \COPY tableName from filePath WITH DELIMITER AS 'yourDataDelimiter' COMMIT;
  ```
 
-Run Queries:
+##### Run Queries:
 
 ```
  \o outputfile.txt 
  \i query.sql
  ```
-
-###2) Spark
+### Spark
 
 - For Parquet format Load data into tables via tableName-load.py files in ```/Spark Queries/``` folder
 - Same for avro and orc, except, add /Jars/Spark files into Spark ```.../jars/``` folder for both Spark Master and all Spark Workrs
 - Run Queries from ```/Spark Queries/```
 
-###3) Flink 
+### Flink 
 
 - Copy all jar files from ```/Jars/Flink``` into ```Flink/Lib``` folder into flink-taskmanager and flink-jobManager lib folders
 
@@ -31,7 +30,7 @@ Run Queries:
 	
 ** If you want to compile and debug (till right before actually running the query, to check syntax & ,...)  on your                         Local Machine like me, be sure to use the same version of flink-client and other jars uploaded to the server to avoid java serialization errors due to UUID changes.
 
-** You can use mvn package (Maven) command to create light weight jars to avoid uploading large files, or else you have to  make fat jars to include all your dependencies.
+** You can use ```mvn package``` (Maven) command to create light weight jars to avoid uploading large files, or else you have to  make fat jars to include all your dependencies.
 
 - To use my project's final jar version run the queries via the lastest jar as below after you copied the jar to your server
 - cd to the jar's location
