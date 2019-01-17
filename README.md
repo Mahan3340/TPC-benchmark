@@ -36,7 +36,7 @@ TPC-H Benchmark on Spark (Avro,Parquet,ORC formats) , PostgreSQL , Flink (Avro F
 - cd to the jar's location
 - ``` Flink run -c jobs.Q# (replace # with the a TPC-H query number fomr 1 to 22) jarfileName.jar ```
 
-  for e.g: ```Flink run -c jobs.Q5 tpcc-flink.jar```
+  for e.g: ```Flink run -c jobs.Q5 tpch-flink.jar```
   
 - This will ask you to provide some Paths:
 
