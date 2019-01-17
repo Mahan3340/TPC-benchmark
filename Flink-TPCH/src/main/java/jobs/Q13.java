@@ -52,8 +52,13 @@ public class Q13 {
 
             Table o_temp = orders.filter("!O_COMMENT.like('%pending%deposits%')");
             Table c_o = customer.leftOuterJoin(o_temp).where("C_CUSTKEY == O_CUSTKEY");
-            Table res1 = c_o.groupBy("O_ORDERKEY").select("O_ORDERKEY.count as C_COUNT,O_ORDERKEY");
+            
+            Table res1 = c_o
+                .groupBy("O_ORDERKEY")
+                .select("O_ORDERKEY.count as C_COUNT,O_ORDERKEY");
+            
             c_o = c_o.select("O_CUSTKEY,O_ORDERKEY as O_ORDERKEY2");
+            
             Table res2 = res1.join(c_o).where("O_ORDERKEY2 == O_ORDERKEY")
                     .select("C_COUNT,O_CUSTKEY,O_ORDERKEY")
                     .groupBy("C_COUNT")
