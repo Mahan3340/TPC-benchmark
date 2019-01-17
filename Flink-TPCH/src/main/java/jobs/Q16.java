@@ -46,8 +46,9 @@ public class Q16 {
             Table partsupp = PartSupp.getTable(env,tEnv,dataAddress);
             Table part = Part.getTable(env,tEnv,dataAddress);
 
-            Table p_temp = part.filter("P_BRAND != 'Brand#31'&& !P_TYPE.like('LARGE PLATED%') && P_SIZE.in(48, 19, 12, 4, 41, 7, 21, 39)")
-                    .select("P_PARTKEY,P_BRAND,P_TYPE,P_SIZE");
+            Table p_temp = part
+                .filter("P_BRAND != 'Brand#31'&& !P_TYPE.like('LARGE PLATED%') && P_SIZE.in(48, 19, 12, 4, 41, 7, 21, 39)")
+                .select("P_PARTKEY,P_BRAND,P_TYPE,P_SIZE");
             Table s_ps = supplier
                 .filter("S_COMMENT.like('%Customer%Complaints%')")
                 .join(partsupp)
