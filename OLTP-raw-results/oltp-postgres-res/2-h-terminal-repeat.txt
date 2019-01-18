@@ -1,0 +1,889 @@
+13:52:17,096 (DBWorkload.java:262) INFO  - ======================================================================
+
+Benchmark:     TPCC {com.oltpbenchmark.benchmarks.tpcc.TPCCBenchmark}
+Configuration: config/tpcc_config_postgres.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:5432/tpcc
+Isolation:     TRANSACTION_REPEATABLE_READ
+Scale Factor:  5.0
+
+13:52:17,099 (DBWorkload.java:263) INFO  - ======================================================================
+13:52:17,114 (DBWorkload.java:522) INFO  - Creating new TPCC database...
+13:52:18,155 (DBWorkload.java:524) INFO  - Finished!
+13:52:18,155 (DBWorkload.java:525) INFO  - ======================================================================
+13:52:18,156 (DBWorkload.java:548) INFO  - Loading data into TPCC database...
+13:55:08,057 (DBWorkload.java:550) INFO  - Finished!
+13:55:08,057 (DBWorkload.java:551) INFO  - ======================================================================
+13:55:08,058 (DBWorkload.java:820) INFO  - Creating 16 virtual terminals...
+13:55:08,181 (DBWorkload.java:825) INFO  - Launching the TPCC Benchmark with 1 Phase...
+13:55:08,200 (ThreadBench.java:327) INFO  - [0;1mPHASE START[0;0m :: [Workload=TPCC] [Serial=false] [Time=7200] [WarmupTime=0] [Rate=10000] [Arrival=REGULAR] [Ratios=[45.0, 43.0, 4.0, 4.0, 4.0]] [ActiveWorkers=16]
+13:55:08,201 (ThreadBench.java:478) INFO  - [0;1mMEASURE[0;0m :: Warmup complete, starting measurements.
+14:01:53,922 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 309 waits for ShareLock on transaction 7089198; blocked by process 307.
+Process 307 waits for ShareLock on transaction 7089200; blocked by process 309.
+  Hint: See server log for query details.
+  Where: while locking tuple (27576,29) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:06:23,423 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 315 waits for ShareLock on transaction 7183698; blocked by process 313.
+Process 313 waits for ShareLock on transaction 7183699; blocked by process 315.
+  Hint: See server log for query details.
+  Where: while locking tuple (35531,17) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:07:58,987 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 322 waits for ShareLock on transaction 7206696; blocked by process 321.
+Process 321 waits for ShareLock on transaction 7206703; blocked by process 322.
+  Hint: See server log for query details.
+  Where: while locking tuple (36420,20) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:12:42,214 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 319 waits for ShareLock on transaction 7346246; blocked by process 320.
+Process 320 waits for ShareLock on transaction 7346245; blocked by process 319.
+  Hint: See server log for query details.
+  Where: while locking tuple (29609,9) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:14:56,127 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 316 waits for ShareLock on transaction 7365768; blocked by process 318.
+Process 318 waits for ShareLock on transaction 7365764; blocked by process 316.
+  Hint: See server log for query details.
+  Where: while locking tuple (24026,21) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:25:21,107 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 307 waits for ShareLock on transaction 7585544; blocked by process 308.
+Process 308 waits for ShareLock on transaction 7585545; blocked by process 307.
+  Hint: See server log for query details.
+  Where: while locking tuple (28613,29) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:25:37,148 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 315 waits for ShareLock on transaction 7598075; blocked by process 314.
+Process 314 waits for ShareLock on transaction 7598077; blocked by process 315.
+  Hint: See server log for query details.
+  Where: while locking tuple (36884,7) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:26:18,805 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 312 waits for ShareLock on transaction 7631463; blocked by process 311.
+Process 311 waits for ShareLock on transaction 7631460; blocked by process 312.
+  Hint: See server log for query details.
+  Where: while locking tuple (39640,17) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:33:03,763 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 308 waits for ShareLock on transaction 7727991; blocked by process 309.
+Process 309 waits for ShareLock on transaction 7727987; blocked by process 308.
+  Hint: See server log for query details.
+  Where: while locking tuple (23011,31) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:45:48,600 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 321 waits for ShareLock on transaction 7981219; blocked by process 320.
+Process 320 waits for ShareLock on transaction 7981217; blocked by process 321.
+  Hint: See server log for query details.
+  Where: while locking tuple (28931,52) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:48:23,111 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 317 waits for ShareLock on transaction 8044884; blocked by process 318.
+Process 318 waits for ShareLock on transaction 8044883; blocked by process 317.
+  Hint: See server log for query details.
+  Where: while locking tuple (4736,7) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:55:41,881 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 307 waits for ShareLock on transaction 8199069; blocked by process 309.
+Process 309 waits for ShareLock on transaction 8199074; blocked by process 307.
+  Hint: See server log for query details.
+  Where: while locking tuple (44582,21) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:55:44,660 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 320 waits for ShareLock on transaction 8201092; blocked by process 321.
+Process 321 waits for ShareLock on transaction 8201093; blocked by process 320.
+  Hint: See server log for query details.
+  Where: while locking tuple (44616,14) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:56:31,741 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 315 waits for ShareLock on transaction 8239124; blocked by process 313.
+Process 313 waits for ShareLock on transaction 8239122; blocked by process 315.
+  Hint: See server log for query details.
+  Where: while locking tuple (38816,6) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:00:30,106 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 307 waits for ShareLock on transaction 8311356; blocked by process 308.
+Process 308 waits for ShareLock on transaction 8311358; blocked by process 307.
+  Hint: See server log for query details.
+  Where: while locking tuple (45989,41) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:06:36,387 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 315 waits for ShareLock on transaction 8458916; blocked by process 313.
+Process 313 waits for ShareLock on transaction 8458915; blocked by process 315.
+  Hint: See server log for query details.
+  Where: while locking tuple (25237,6) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:07:03,540 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 322 waits for ShareLock on transaction 8480585; blocked by process 321.
+Process 321 waits for ShareLock on transaction 8480583; blocked by process 322.
+  Hint: See server log for query details.
+  Where: while locking tuple (22043,8) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:07:30,190 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 320 waits for ShareLock on transaction 8485469; blocked by process 322.
+Process 322 waits for ShareLock on transaction 8485466; blocked by process 320.
+  Hint: See server log for query details.
+  Where: while locking tuple (26308,14) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:16:46,556 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 310 waits for ShareLock on transaction 8634383; blocked by process 312.
+Process 312 waits for ShareLock on transaction 8634384; blocked by process 310.
+  Hint: See server log for query details.
+  Where: while locking tuple (4903,35) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:29:40,183 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 321 waits for ShareLock on transaction 8893298; blocked by process 319.
+Process 319 waits for ShareLock on transaction 8893300; blocked by process 321.
+  Hint: See server log for query details.
+  Where: while locking tuple (37930,4) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:37:09,115 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 316 waits for ShareLock on transaction 9053476; blocked by process 317.
+Process 317 waits for ShareLock on transaction 9053481; blocked by process 316.
+  Hint: See server log for query details.
+  Where: while locking tuple (35761,34) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:47:35,661 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 317 waits for ShareLock on transaction 9225000; blocked by process 318.
+Process 318 waits for ShareLock on transaction 9225001; blocked by process 317.
+  Hint: See server log for query details.
+  Where: while locking tuple (36536,8) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:51:22,429 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 322 waits for ShareLock on transaction 9284741; blocked by process 321.
+Process 321 waits for ShareLock on transaction 9284738; blocked by process 322.
+  Hint: See server log for query details.
+  Where: while locking tuple (30048,17) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:54:20,697 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 314 waits for ShareLock on transaction 9331802; blocked by process 313.
+Process 313 waits for ShareLock on transaction 9331803; blocked by process 314.
+  Hint: See server log for query details.
+  Where: while locking tuple (42016,14) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+15:55:08,202 (ThreadBench.java:433) INFO  - [0;1mTERMINATE[0;0m :: Waiting for all terminals to finish ..
+15:55:14,792 (ThreadBench.java:233) INFO  - Starting WatchDogThread
+15:55:16,045 (DBWorkload.java:831) INFO  - ======================================================================
+15:55:16,046 (DBWorkload.java:832) INFO  - Rate limited reqs/s: Results(nanoSeconds=7200000024746, measuredRequests=2634779) = 365.9415265200571 requests/sec
+15:55:16,049 (DBWorkload.java:686) INFO  - Output Raw data into file: results/2-h-repeat.csv
+15:55:55,637 (DBWorkload.java:743) INFO  - Output into file: results/2-h-repeat.res
+15:55:55,638 (DBWorkload.java:746) INFO  - Grouped into Buckets of 5 seconds
+15:55:55,674 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,675 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,676 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,677 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,679 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,681 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,681 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,684 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,684 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,686 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,687 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,687 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,692 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,692 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,693 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,696 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,696 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,699 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,699 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,702 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,703 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,705 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,706 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,723 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,723 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,724 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,724 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,740 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,740 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,740 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,741 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,744 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,745 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,747 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,748 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,749 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,749 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,752 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,752 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,753 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,754 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,754 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,754 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,756 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,757 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,758 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,759 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,759 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,761 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,762 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,798 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,799 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,799 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,800 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,800 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,801 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,801 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,804 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,805 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,806 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,806 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,809 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,809 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,811 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,812 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,813 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,813 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,815 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,815 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,817 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,817 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,817 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,819 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,819 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,820 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,821 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,821 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,839 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,840 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,840 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,843 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,843 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,844 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,845 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,845 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,847 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,849 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,851 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,852 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,852 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,852 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,858 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,859 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,860 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,862 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,862 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,865 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,865 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,868 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,869 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,876 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,878 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,878 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,880 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,883 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,883 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,884 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,885 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,886 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,905 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,906 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,906 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,907 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,907 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,908 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,908 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,909 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,909 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,909 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,911 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,913 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,914 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,916 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,917 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,918 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,918 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,919 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,921 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,922 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,923 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,923 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,923 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,924 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,926 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,929 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,929 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,930 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,946 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,946 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,954 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,955 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,956 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,956 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,957 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,959 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,964 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,964 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,965 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,971 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,971 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,972 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,974 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,975 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,976 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,976 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,977 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,980 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,981 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,981 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,982 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,982 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,983 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:55,983 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,013 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,014 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,014 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,016 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,016 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,017 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,017 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,018 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,021 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,022 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,022 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,023 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,023 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,024 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,024 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,025 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,028 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,029 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,030 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,031 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,031 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,031 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,034 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,035 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,035 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,036 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,037 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,038 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,038 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,038 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,058 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,066 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,067 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,067 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,068 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,069 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,069 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,070 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,071 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,071 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,071 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,073 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,073 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,073 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,074 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,075 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,075 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,075 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,076 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,077 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,077 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,077 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,078 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,119 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,120 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,121 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,121 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,122 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,123 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,123 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,124 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,124 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,125 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,125 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,126 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,126 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,127 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,128 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,130 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,130 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,130 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,131 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,132 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,133 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,134 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,134 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,134 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,135 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,136 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,137 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,137 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,141 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,144 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,144 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,145 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,146 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,146 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,177 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,178 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,178 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,187 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,187 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,187 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,188 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,189 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,189 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,190 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,190 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,194 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,194 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,194 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,196 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,196 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,196 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,198 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,198 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,199 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,200 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,200 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,201 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,202 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,213 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,214 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,214 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,216 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,216 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,217 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,224 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,224 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,225 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,226 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,226 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,226 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,228 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,228 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,231 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,231 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,233 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,233 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,234 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,235 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,239 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,241 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,241 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,242 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,247 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,248 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,250 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,250 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,251 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,251 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,251 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,251 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,253 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,254 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,254 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,255 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,255 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,256 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,274 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,274 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,276 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,277 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,277 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,277 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,279 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,279 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,281 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,281 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,281 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,284 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,284 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,285 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,285 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,286 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,286 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,288 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,288 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,289 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,290 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,295 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,299 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,299 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,308 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,309 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,310 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,310 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,311 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,314 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,314 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,315 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,315 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,316 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,316 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,317 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,317 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,317 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,318 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,319 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,319 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,320 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,320 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,321 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,335 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,335 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,336 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,336 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,338 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,338 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,339 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,341 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,342 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,342 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,343 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,345 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,347 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,347 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,347 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,349 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,350 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,350 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,351 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,352 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,352 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,352 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,358 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,359 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,359 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,362 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,362 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,362 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,365 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,366 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,366 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,367 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,367 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,368 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,368 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,368 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,370 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,370 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,373 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,373 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,380 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,381 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,381 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,381 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,382 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,389 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,389 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,389 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,392 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,392 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,393 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,394 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,395 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,395 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,396 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,398 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,398 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,399 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,400 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,400 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,403 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,403 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,404 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,404 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,405 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,405 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,406 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,406 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,407 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,407 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,407 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,410 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+15:55:56,418 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list

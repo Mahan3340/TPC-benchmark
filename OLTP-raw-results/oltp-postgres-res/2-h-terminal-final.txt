@@ -1,0 +1,229 @@
+12:22:59,842 (DBWorkload.java:262) INFO  - ======================================================================
+
+Benchmark:     TPCC {com.oltpbenchmark.benchmarks.tpcc.TPCCBenchmark}
+Configuration: config/tpcc_config_postgres.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:5432/tpcc
+Isolation:     TRANSACTION_READ_COMMITTED
+Scale Factor:  2.0
+
+12:22:59,844 (DBWorkload.java:263) INFO  - ======================================================================
+12:22:59,859 (DBWorkload.java:820) INFO  - Creating 16 virtual terminals...
+12:23:00,065 (DBWorkload.java:825) INFO  - Launching the TPCC Benchmark with 1 Phase...
+12:23:00,078 (ThreadBench.java:327) INFO  - [0;1mPHASE START[0;0m :: [Workload=TPCC] [Serial=false] [Time=7200] [WarmupTime=0] [Rate=10000] [Arrival=REGULAR] [Ratios=[45.0, 43.0, 4.0, 4.0, 4.0]] [ActiveWorkers=16]
+12:23:00,079 (ThreadBench.java:478) INFO  - [0;1mMEASURE[0;0m :: Warmup complete, starting measurements.
+12:44:04,016 (Worker.java:495) WARN  - The DBMS rejected the transaction without an error code
+org.postgresql.util.PSQLException: ERROR: deadlock detected
+  Detail: Process 256 waits for ShareLock on transaction 5195449; blocked by process 260.
+Process 260 waits for ShareLock on transaction 5195450; blocked by process 256.
+  Hint: See server log for query details.
+  Where: while locking tuple (9636,22) in relation "stock"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2310)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2023)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:217)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:421)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:118)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.newOrderTransaction(NewOrder.java:293)
+	at com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder.run(NewOrder.java:158)
+	at com.oltpbenchmark.benchmarks.tpcc.TPCCWorker.executeWork(TPCCWorker.java:74)
+	at com.oltpbenchmark.api.Worker.doWork(Worker.java:386)
+	at com.oltpbenchmark.api.Worker.run(Worker.java:296)
+	at java.lang.Thread.run(Thread.java:748)
+14:23:00,081 (ThreadBench.java:433) INFO  - [0;1mTERMINATE[0;0m :: Waiting for all terminals to finish ..
+14:23:04,512 (ThreadBench.java:233) INFO  - Starting WatchDogThread
+14:23:05,155 (DBWorkload.java:831) INFO  - ======================================================================
+14:23:05,156 (DBWorkload.java:832) INFO  - Rate limited reqs/s: Results(nanoSeconds=7200000221804, measuredRequests=1051926) = 146.10082883253497 requests/sec
+14:23:05,160 (DBWorkload.java:686) INFO  - Output Raw data into file: results/2-h-final.csv
+14:23:21,358 (DBWorkload.java:743) INFO  - Output into file: results/2-h-final.res
+14:23:21,358 (DBWorkload.java:746) INFO  - Grouped into Buckets of 5 seconds
+14:23:21,411 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,411 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,416 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,416 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,419 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,420 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,420 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,424 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,426 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,427 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,429 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,431 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,432 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,434 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,434 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,436 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,437 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,437 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,437 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,441 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,441 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,442 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,443 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,445 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,445 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,446 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,447 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,448 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,448 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,449 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,452 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,453 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,454 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,454 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,457 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,458 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,459 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,460 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,461 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,462 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,463 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,505 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,505 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,505 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,508 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,508 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,509 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,510 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,512 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,512 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,513 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,515 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,515 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,518 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,518 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,524 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,524 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,524 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,527 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,527 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,527 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,530 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,531 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,531 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,532 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,533 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,533 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,535 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,535 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,564 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,565 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,565 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,565 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,567 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,567 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,568 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,569 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,570 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,570 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,579 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,581 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,581 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,581 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,582 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,584 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,584 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,586 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,586 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,586 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,588 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,589 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,590 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,620 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,621 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,621 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,628 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,629 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,629 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,630 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,630 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,631 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,631 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,632 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,633 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,634 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,634 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,635 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,635 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,636 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,637 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,637 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,638 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,638 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,639 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,641 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,641 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,641 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,642 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,655 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,662 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,662 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,662 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,664 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,664 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,665 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,666 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,670 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,670 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,672 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,673 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,673 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,674 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,675 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,675 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,676 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,678 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,679 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,680 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,693 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,693 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,696 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,696 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,696 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,698 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,698 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,698 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,700 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,700 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,701 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,706 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,706 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,713 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,713 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,731 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,731 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,731 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,732 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,732 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,733 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,733 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,734 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,734 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,735 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,736 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,736 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,737 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,738 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,738 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,739 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,739 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,740 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,741 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,742 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,743 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,743 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,746 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,746 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,758 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,758 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,763 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,764 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,764 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,773 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,773 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,773 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,774 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,775 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,775 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
+14:23:21,776 (DistributionStatistics.java:63) WARN  - cannot compute statistics for an empty list
