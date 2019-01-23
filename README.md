@@ -44,7 +44,7 @@ a) For my convinient, I managed to save all texts printed on the console to a fi
 
 ** as for this path be sure to include '/' at both ends and be sure that the folders under the directory alread exist I wont check for them.
 
-b) The second address that you should provide is the one needed to write the query results to, this path unfortunately should be HDFS only, I didn't spend more time to figure the problem with saving it on local machine
+b) The second address that you should provide is the one needed to write the query results to, this path unfortunately should be HDFS only, I didn't spend more time to figure out the problem with saving it on local machine
 so the path would be something like ```hdfs://namenode:8020/your-path/```  and the results would be accessible on 
 ```hdfs://namenode/your-path/Q5-res.csv```
 
@@ -63,7 +63,7 @@ lineitem.avro
 part.avro
 partsupp.avro
 supplier.avro
-order.avro
+orders.avro
 customer.avro
 region.avro
 ```
